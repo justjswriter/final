@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h2>User Profile</h2>
+    <img src="<%= user.profileImage %>" alt="Profile Image" width="100">
+    
+    <form action="/profile/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="profileImage" required>
+        <button type="submit">Upload New Profile Image</button>
+    </form>
+
+    <form action="/profile/update" method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" value="<%= user.username %>" required>
+        <label>Email:</label>
+        <input type="email" name="email" value="<%= user.email %>" required>
+        <button type="submit">Update Profile</button>
+    </form>
+
+    <form action="/profile/delete" method="POST" onsubmit="return confirm('Are you sure? This action cannot be undone.')">
+        <button type="submit" style="color: red;">Delete Account</button>
+    </form>
+
+    <a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>

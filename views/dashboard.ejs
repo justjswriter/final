@@ -1,0 +1,21 @@
+<h1>Dashboard</h1>
+<p>Welcome, <%= user ? user.username : "Guest" %>!</p>
+<script>
+    async function updateUsername() {
+      try {
+        const response = await fetch('/api/user'); 
+        const data = await response.json();
+        if (data.user) {
+          document.getElementById("username").innerText = data.user.username;
+        }
+      } catch (error) {
+        console.error("Ошибка обновления имени:", error);
+      }
+    }
+  
+    setInterval(updateUsername, 5000); 
+  </script>
+  
+<a href="/tasks">Manage Tasks</a>
+<a href="/profile">View Profile</a>
+<a href="/auth/logout">Logout</a>

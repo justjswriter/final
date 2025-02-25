@@ -40,3 +40,5 @@ The project is structured modularly with separate files for routes, models, cont
 - **Validation**: Joi (or Validator.js) for incoming data
 
 ## Project Structure
+
+task-manager/ ├── config/ # Configuration files (database, environment variables) ├── controllers/ # Business logic (auth, tasks) ├── middleware/ # Middleware (authentication, validation) ├── models/ # MongoDB models (User, Task) ├── routes/ # Express routes (auth, tasks) ├── views/ # EJS templates (HTML pages) ├── public/ # Static files (CSS, images, client-side JS) ├── .env # Environment variables (not pushed to GitHub) ├── package.json # Project metadata and dependencies └── README.md # Project documentation

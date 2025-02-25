@@ -8,7 +8,7 @@ exports.validateRegister = (req, res, next) => {
       console.log("Password validation failed"); 
       return res.render("register", { 
           error: "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character",
-          user: { username, email } 
+          user: null
       });
   }
 

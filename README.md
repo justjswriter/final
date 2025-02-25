@@ -94,72 +94,62 @@ final/
    ```bash
    git clone https://github.com/justjswriter/final.git
    cd final
-Install Dependencies
+2️⃣ Install Dependencies
 npm install
-Create a .env File In the root directory, create a .env file with the following content (update with your own credentials):
+3️⃣ Create a .env File
+Create a .env file in the root directory and add the following:
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
 SESSION_SECRET=your_session_secret
 JWT_SECRET=your_jwt_secret
-Run the Application
+4️⃣ Run the Application
 npm start
-Your app should run on http://localhost:3000.
-API Documentation
+Your app should now be running at http://localhost:3000 🚀
+📌 API Documentation
 
-Authentication (Public Endpoints)
-POST /register
-Registers a new user with an encrypted password.
-Body: { username, email, password }
-POST /login
-Authenticates a user and returns a JWT.
-Body: { email, password }
-User Management (Private Endpoints)
-GET /users/profile
-Retrieves the logged-in user's profile.
-Headers: Authorization: Bearer <JWT>
-PUT /users/profile
-Updates the logged-in user's profile (e.g., change email or username).
-Headers: Authorization: Bearer <JWT>
-Body: { username, email }
-Task Management (Private Endpoints)
-POST /tasks
-Create a new task.
-Headers: Authorization: Bearer <JWT>
-Body: { title, description, dueDate }
-GET /tasks
-Retrieve all tasks for the logged-in user.
-Headers: Authorization: Bearer <JWT>
-GET /tasks/:id
-Retrieve a specific task by its ID.
-Headers: Authorization: Bearer <JWT>
-PUT /tasks/:id
-Update a specific task (e.g., mark as completed).
-Headers: Authorization: Bearer <JWT>
-Body: { title, description, dueDate, status }
-DELETE /tasks/:id
-Delete a specific task.
-Headers: Authorization: Bearer <JWT>
-Deployment
+🔐 Authentication Routes (Public)
+Method	Route	Description
+POST	/register	Registers a new user (encrypts password).
+POST	/login	Authenticates user and returns a JWT token.
+🔒 User Routes (Private)
+Method	Route	Description
+GET	/users/profile	Get logged-in user's profile.
+PUT	/users/profile	Update profile (username, email).
+📋 Task Routes (Private)
+Method	Route	Description
+POST	/tasks	Create a new task.
+GET	/tasks	Get all tasks for the logged-in user.
+GET	/tasks/:id	Get a specific task by ID.
+PUT	/tasks/:id	Update a task (mark as completed, edit).
+DELETE	/tasks/:id	Delete a task.
+Each private route requires a JWT in the Authorization header:
+Authorization: Bearer <your_token>
+🚀 Deployment
 
-This project can be deployed on platforms like Render, Railway, or Replit. For Render:
-Push your code to GitHub.
-Create a new Web Service on Render.
-Configure Build & Start Commands:
-Build Command: npm install
-Start Command: npm start
-Set Environment Variables in Render's Dashboard (matching your .env file).
-Deploy the project and test your deployed app.
-Advanced Features
+1️⃣ Push to GitHub
+git add .
+git commit -m "Initial commit"
+git push origin main
+2️⃣ Deploy on Render
+Go to Render
+Click "New Web Service"
+Select your GitHub repository
+Set Build Command → npm install
+Set Start Command → npm start
+Add Environment Variables from .env
+Click Deploy
+After deployment, access your app at:
+🔗 https://your-app.onrender.com
+🔐 Security
 
-Role-Based Access Control (RBAC):
-Implement roles such as "admin" and "user".
-For example, only admins may delete tasks while regular users can only update their own tasks.
-(Implementation details can be extended as needed.)
-License
+✔️ JWT Authentication for secure user login
+✔️ bcrypt for password hashing before storing in MongoDB
+✔️ Environment Variables to hide sensitive credentials
+🎯 Advanced Features
+
+✅ Add Admin Dashboard
+✅ Implement Task Filtering & Sorting
+✅ Add Notifications for Task Deadlines
+📝 License
 
 This project is licensed under the MIT License.
-Acknowledgements
-
-Express.js Documentation
-MongoDB Documentation
-Render Deployment Guide
